@@ -27,7 +27,6 @@ function App() {
       <Sobre />
       <Proyectos />
       <Servicios />
-      <Contacto />
       <Wa />
       <Footer />
       

@@ -77,7 +77,21 @@ body {
   font-weight: 500;
   transition: color 0.3s ease;
 }
+.btn-contacto-nav {
+  background-color: #0bb34b; /* Verde WhatsApp */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
+.btn-contacto-nav:hover {
+  background-color: #098a3a;
+  transform: scale(1.05);
+}
 .menu li a:hover {
   color: #0bb34b; /* Cambia a verde al pasar el mouse */
 }

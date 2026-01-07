@@ -9,6 +9,11 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const abrirWhatsapp = () => {
+    const telefono = "59162697577";
+    const mensaje = encodeURIComponent("Hola Moll ONE, vengo desde el sitio web y me gustaría solicitar una cotización.");
+    window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+  };
 
   return (
     <nav className="navbar">
@@ -30,8 +35,10 @@ const Navbar = () => {
 
         <button onClick={() => scrollToSection('proyectos')} className="btn-proyectos">¿Por qué elegirnos?</button>
       </ul>
-
-      <button className="btn-contacto" onClick={() => scrollToSection('contacto')}>Contacto</button>
+     <button className="btn-contacto-nav" onClick={abrirWhatsapp}>
+        Contacto
+      </button>
+      
     </nav>
   );
 };
