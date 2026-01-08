@@ -16,7 +16,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.03);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.btn-inicio, .btn-nosotros, .btn-servicios, .btn-proyectos {
+.btn-inicio, .btn-nosotros, .btn-servicios, .btn-proyectos,.btn-pro {
   background: none;
   border: none;
   font-size: 0.95rem;
@@ -123,25 +123,20 @@ body {
   }
 }
 .hero {
-  /* Altura: usa min-height en lugar de height para que sea flexible */
-  min-height: 85vh; 
+  min-height: 100vh; 
   width: 100%;
-  margin: 0;
-  
-  /* Alineación del texto */
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 8%; /* Un margen equilibrado */
+  padding: 0 8%;
   
-  /* Ajuste de imagen de fondo */
-  background-size: cover;      /* ESTO ES CLAVE: Ajusta la imagen al hueco sin deformar */
-  background-position: center; /* Centra la imagen */
+  /* AJUSTES PARA LA IMAGEN */
+   background-position: center; /* Centra la imagen para evitar cortes raros */
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Mantiene el efecto Parallax */
   
-  overflow: hidden;
+  
   color: white;
+  position: relative;
 }
 
 .hero-text {
@@ -166,12 +161,12 @@ body {
 .btn-cotizar {
   background-color: #0bb34b;
   color: white;
-  padding: 15px 30px;
-  border-radius: 8px;
+  padding: 20px 40px;
+  border-radius: 10px;
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   border: none;
   cursor: pointer;
 }
@@ -185,20 +180,7 @@ button {
  background: linear-gradient(135deg, #0066ff, #00b3a4);  transform: scale(1.05); /* El botón crece un poquito suavemente */
   box-shadow: 0 10px 20px rgba(11, 179, 75, 0.3);
 }
-.btn-cotizar {
-  background-color: #0bb34b; /* Verde Moll ONE */
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-}
+
 .elegirnos{
 min-height: 85vh; 
   width: 100%;
@@ -219,6 +201,53 @@ min-height: 85vh;
   overflow: hidden;
   color: white;
 
+}
+.pro-section {
+  padding: 60px 5%;
+  background-color: #f8f9fa;
+}
+
+.pro-swiper {
+  padding: 40px 10px !important;
+}
+
+.pro-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  height: 350px; /* Altura fija para uniformidad */
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Clave para que no se estiren las fotos */
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(11, 17, 32, 0.6));
+  transition: 0.3s;
+}
+
+/* Colores de las flechas del slider para que combinen con Moll ONE */
+.swiper-button-next, .swiper-button-prev {
+  color: #0bb34b !important; 
+}
+
+.swiper-pagination-bullet-active {
+  background: #0bb34b !important;
 }
 .elegirnos-header h2{
   justify-content: center;
@@ -339,23 +368,21 @@ display: grid;
   }
 }
 /* Responsivo para celulares */
-@media (max-width: 968px) {
+/* MEDIA QUERY: Para celulares */
+@media (max-width: 768px) {
   .hero {
-    background-color: #ba123f;
-    flex-direction: column;
+    /* Desactivamos el 'fixed' en celulares porque causa zoom/distorsión */
+    background-attachment: scroll; 
+    padding: 0 5%;
+    justify-content: center; /* Centramos el texto en móviles */
     text-align: center;
-    padding: 40px 20px;
+    min-height: 70vh; /* Un poco más pequeña en celular */
   }
 
-  .hero-text {
-    margin-bottom: 40px;
-  }
-
-  .btn-cotizar {
-    margin: 0 auto;
+  .hero-text h1 {
+    font-size: 2.2rem; /* Texto más pequeño para que no se amontone */
   }
 }
-
 /* Contenedor principal de la sección */
 .servicios-section {
   padding: 80px 40px;
@@ -844,9 +871,11 @@ p{
   font-size: 24px;
   margin-bottom: 20px;
 }
-
+.nosotros-section{
+  background-color: #ffffff;
+}
 /* Colores específicos según tu imagen */
-.bg-blue-light { background-color: #eef4ff; }
+.bg-blue-light { background-color: #cfd6e3; }
 .icon-blue { color: #3b82f6; }
 
 .bg-green-light { background-color: #ecfdf5; }
@@ -861,7 +890,7 @@ p{
 
 .nosotros-item p {
   font-size: 14px;
-  color: #555;
+  color: #1f1d1d;
   line-height: 1.5;
   max-width: 300px;
 }
@@ -924,8 +953,97 @@ p{
     width: 100%;
   }
 }
-.proyectos{
+.card-image-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto evita que las fotos se deformen si tienen tamaños distintos */
+}
+
+.card-icon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 17, 32, 0.4); /* Un velo oscuro para que el icono resalte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  transition: background 0.3s ease;
+}
+
+.card-servicio:hover .card-icon-overlay {
+  background: rgba(11, 179, 75, 0.7); /* Al pasar el mouse, se vuelve verde Moll ONE */
+}
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.servicio-card {
+  background: rgb(194, 241, 227);
+  border-radius: 15px;
+  overflow: hidden; /* Corta la imagen para que respete las esquinas redondeadas */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.servicios-section{
+background-color: rgb(204, 232, 231);
+
+}
+.servicio-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Contenedor de la foto dentro de la card */
+.card-image-bg {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+.card-image-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen sin estirarla */
+}
+
+/* Capa oscura sobre la foto para que el icono resalte */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 17, 32, 0.5); /* Color oscuro transparente */
+}
 
 
 
+/* Texto debajo de la foto */
+.card-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-info h3 {
+  margin-bottom: 10px;
+  color: #010205;
+  font-size: 2rem;
+}
+
+.card-info p {
+  font-size: 0.9rem;
+  color: #090a0c;
 }

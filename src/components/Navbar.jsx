@@ -33,6 +33,8 @@ const Navbar = () => {
 
         <button onClick={() => scrollToSection('servicios')} className="btn-servicios">Servicios</button>
 
+        <button onClick={() => scrollToSection('pro')} className="btn-pro">Proyectos</button>
+
         <button onClick={() => scrollToSection('proyectos')} className="btn-proyectos">¿Por qué elegirnos?</button>
       </ul>
      <button className="btn-contacto-nav" onClick={abrirWhatsapp}>

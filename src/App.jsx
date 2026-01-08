@@ -11,6 +11,7 @@ import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import Proyectos from './components/Proyectos';
 import Wa from './components/Wa';
+import Pro from './components/Pro';
 
 function App() {
   useEffect(() => {
@@ -24,9 +25,11 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <Pro />
+      <Servicios />
       <Sobre />
       <Proyectos />
-      <Servicios />
+      
       <Wa />
       <Footer />
       
